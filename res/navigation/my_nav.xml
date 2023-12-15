@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/recipesFragment">
+
+    <fragment
+        android:id="@+id/recipesFragment"
+        android:name="com.example.foodapp.ui.fragments.recipes.RecipesFragment"
+        android:label="Recipes"
+        tools:layout="@layout/fragment_recipes" >
+        <action
+            android:id="@+id/action_recipesFragment_to_recipeBottomSheetFragment"
+            app:destination="@id/recipeBottomSheetFragment" />
+        <argument
+            android:name="backFromBottomSheet"
+            app:argType="boolean"
+            android:defaultValue="false" />
+        <action
+            android:id="@+id/action_recipesFragment_to_detailActivity"
+            app:destination="@id/detailActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoriteRecipesFragment"
+        android:name="com.example.foodapp.ui.fragments.favorites.FavoritsFragment"
+        android:label="Favorites"
+        tools:layout="@layout/fragment_favorits" />
+    <fragment
+        android:id="@+id/foodJokeFragment"
+        android:name="com.example.foodapp.ui.fragments.foodjoke.FoodJokeFragment"
+        android:label="Food Joke"
+        tools:layout="@layout/fragment_food_joke" />
+    <dialog
+        android:id="@+id/recipeBottomSheetFragment"
+        android:name="com.example.foodapp.ui.fragments.recipes.bottomsheet.RecipeBottomSheetFragment"
+        android:label="Choose"
+        tools:layout="@layout/fragment_recipe_bottom_sheet" >
+        <action
+            android:id="@+id/action_recipeBottomSheetFragment_to_recipesFragment"
+            app:destination="@id/recipesFragment" />
+    </dialog>
+    <activity
+        android:id="@+id/detailActivity"
+        android:name="com.example.foodapp.ui.DetailActivity"
+        android:label="activity_detail"
+        tools:layout="@layout/activity_detail" >
+        <argument
+            android:name="result"
+            app:argType="com.example.foodapp.models.Result" />
+    </activity>
+</navigation>
